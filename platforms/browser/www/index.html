@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+    <link rel="stylesheet" type="text/css" href="vendor/jquery.mobile-1.4.2.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <title>Personal Timer App</title>
+</head>
+
+<body>
+    
+<section data-role="page" id="home">
+    <header data-role="header" data-position="fixed">
+        <h1>Timer App</h1>
+    </header>
+
+    <div class="ui-content" data-role="content">
+        <h1>My Timer App</h1>
+        <img src="img/timerBG.jpg" alt="clock">
+
+        <button id="asdf">Click me</button>
+
+        <h2>Timer App Features:</h2>
+        <div data-role="collapsibleset" data-inset="true">
+            <div data-role="collapsible" data-collapsed-icon="plus" data-expanded-icon="minus">
+                <h3>Stop Watch</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div data-role="collapsible" data-collapsed-icon="plus" data-expanded-icon="minus">
+                <h3>Timer</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div data-role="collapsible" data-collapsed-icon="plus" data-expanded-icon="minus">
+                <h3>My Timers</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+
+<!--         <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Ready let's go</p>
+            <br>
+            <p id="ready" style="display: none;">Hello World</p>
+
+         </div> -->
+         <!-- end of device ready -->
+    </div><!-- end of app / content-->
+
+    <div data-role="footer" data-position="fixed">
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#home" data-transition="slide"  class="ui-btn-active" data-icon="home">Home</a></li>
+        <li><a href="#stopPage" data-transition="slide" data-icon="clock">Stop Watch</a></li>
+        <li><a href="#timerPage" data-transition="slide"  data-icon="clock">Timer</a></li>
+        <li><a href="#viewPage" data-transition="slide" data-icon="bullets">My Timers</a></li>
+      </ul>
+    </div><!-- /navbar -->
+    </div>
+</section> 
+<!-- end page -->
+
+
+
+<section data-role="page" id="stopPage">
+    <header data-role="header" data-position="fixed">
+        <h1>Timer App</h1>
+    </header>
+
+    <div class="ui-content">
+      <h2 style="text-align: center">Stop Watch</h2>
+      <p id="sw-timeResult" style="font-size: 5em; text-align: center; width: 100%;">00:00</p>
+
+      <button id="sw-StartBtn">Start</button>
+      <button id="sw-PauseBtn">Pause</button>
+      <br>
+      <button id="sw-ResetBtn">Reset</button>
+    </div>
+
+    <div data-role="footer" data-position="fixed">
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#home" data-transition="slide" data-icon="home"></a></li>
+        <li><a href="#stopPage" data-transition="slide" class="ui-btn-active" data-icon="clock"></a></li>
+        <li><a href="#timerPage" data-transition="slide"  data-icon="clock"></a></li>
+        <li><a href="#viewPage" data-transition="slide" data-icon="bullets"></a></li>
+      </ul>
+    </div><!-- /navbar -->
+    </div>
+</section> 
+<!-- end page -->
+
+
+
+<section data-role="page" id="timerPage">
+    <header data-role="header" data-position="fixed">
+        <h1>Timer App</h1>
+    </header>
+
+    <div class="ui-content">
+
+      <div class="tab-timerForm">         
+        <form id="timerForm" method="GET" action="">
+
+          <fieldset class="ui-field-contain">
+            <label for="timerName">Name of timer:</label>
+            <input type="text" name="timerName" id="timerName" value="" placeholder="Study Timer">
+          </fieldset>
+          <br>
+          <fieldset class="ui-field-contain">
+            <label for="minuteSlider">Minutes:</label>
+            <input type="range" name="minuteSlider" id="minuteSlider" value="1" min="0" max="60">
+          </fieldset>
+          <br>
+          <fieldset class="ui-field-contain">
+            <label for="secondsSlider">Seconds:</label>
+            <input type="range" name="secondsSlider" id="secondsSlider" value="30" min="0" max="59">
+          </fieldset>
+          <br>
+          <fieldset class="ui-field-contain">
+            <button id="submitTimerForm" class="ui-btn ui-btn-inline">Create Timer</button>
+          </fieldset>
+        </form>
+      </div>
+
+
+
+
+      <div class="tab-timer">
+        <h2 style="text-align: center">Timer</h2>
+        <p id="timeResult" style="font-size: 5em; text-align: center; width: 100%;">00:00</p>
+
+        <div id="expireTime"></div>
+
+        <button id="timerStartBtn">Start</button>
+        <button id="timerStopBtn">Stop</button>
+        <br>
+        <button id="timerResetBtn">Reset</button><!-- back to form -->
+        <button id="timerSaveBtn">Save</button>
+  
+  <!-- Pop up -->
+        <div data-role="popup" id="popupSave" class="ui-content" style="max-width:280px">
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-left">Close</a>
+            <p>Timer has been saved!</p>
+        </div>
+        <!-- end of pop up -->
+
+      </div><!-- end of tab timer -->
+
+    </div><!-- end of content -->
+
+
+    <div data-role="footer" data-position="fixed">
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#home" data-transition="slide" data-icon="home"></a></li>
+        <li><a href="#stopPage" data-transition="slide" data-icon="clock"></a></li>
+        <li><a href="#timerPage" data-transition="slide" class="ui-btn-active" data-icon="clock"></a></li>
+        <li><a href="#viewPage" data-transition="slide" data-icon="bullets"></a></li>
+      </ul>
+    </div><!-- /navbar -->
+    </div>
+</section> 
+<!-- end page -->
+
+
+
+
+<section data-role="page" id="viewPage">
+    <header data-role="header" data-position="fixed">
+        <h1>Timer App</h1>
+    </header>
+
+    <div class="ui-content">
+      <h2 style="text-align: center">My Timers</h2>
+
+      <ul data-role="listview" id="timersList" data-inset="true" data-icon="action">
+        <!-- filled dynamically -->
+      </ul>
+
+      <div data-role="popup" id="popupDelete" class="ui-content" style="max-width:280px">
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-left">Close</a>
+            <p>Timer has been deleted!</p>
+        </div>
+
+    </div><!-- end of content -->
+
+    <div data-role="footer" data-position="fixed">
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#home" data-transition="slide" data-icon="home"></a></li>
+        <li><a href="#stopPage" data-transition="slide" data-icon="clock"></a></li>
+        <li><a href="#timerPage" data-transition="slide"  data-icon="clock"></a></li>
+        <li><a href="#viewPage" data-transition="slide" class="ui-btn-active" data-icon="bullets"></a></li>
+      </ul>
+    </div><!-- /navbar -->
+    </div>
+</section> 
+<!-- end page -->
+
+    <script src="vendor/jquery.js"></script>
+    <script src="vendor/jquery.mobile-1.4.5.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+<!--     <script type="text/javascript" src="js/databaseHandler.js"></script>
+    <script type="text/javascript" src="js/timesHandler.js"></script> -->
+   <script type="text/javascript" src="js/timerDatabase.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+</body>
+
+</html>
