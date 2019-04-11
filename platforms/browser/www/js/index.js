@@ -55,14 +55,17 @@ var app = {
               // Read the items backwards (most recent first).
               var timerItem = timers[(timers.length - 1 - i)];
 
+                var mySeconds = timerItem.seconds;
+                if (mySeconds == 0){mySeconds="00"}
+
                 // Create elements and display on DOM
                 var li = $('<li />').attr("data-id",timerItem.timestamp);
                 var h2 = $('<h2 />').text(timerItem.name);
                 var p = $("<p />").html("<strong>Time of timer:</strong>");
-                var p2 = $("<p />").attr({"data-minutes" : timerItem.minutes, "data-seconds": timerItem.seconds}).html(timerItem.minutes + ":" + timerItem.seconds);
+                var p2 = $("<p />").attr({"data-minutes" : timerItem.minutes, "data-seconds": timerItem.seconds}).html(timerItem.minutes + ":" + mySeconds);
                 var p3 = $("<p />", {class: "ui-li-aside"}).attr("data-device", timerItem.device).text("Saved on " + timerItem.device);
-                var btn1 = $("<button />",{class: "ui-btn ui-btn-b ui-btn-inline ui-mini"}).text("Delete");
-                var btn2 = $("<button />",{class: "ui-btn ui-btn-inline ui-mini"}).text("Use");
+                var btn1 = $("<button />",{class: "ui-btn ui-btn-inline ui-mini rightBtn deleteBtn"}).text("Delete");
+                var btn2 = $("<button />",{class: "ui-btn ui-btn-inline ui-mini rightBtn"}).text("Use");
                 
 
                 li.append(h2).append(p).append(p2).append(p3).append(btn1).append(btn2);
@@ -265,7 +268,6 @@ var app = {
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
 
-
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
         // console.log('Received Event: ' + id);
@@ -289,6 +291,8 @@ function getTimeLabel(minutes, seconds) {
     else {
         resultString = resultString + ":" + seconds;
     }
+
+
 
     return resultString
 }
